@@ -8,7 +8,7 @@ set nocompatible
 " Vundle configuration
 filetype off
 set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+call vundle#rc()
 
 " let Vundle manage Vundle required!
 Bundle 'gmarik/vundle'
