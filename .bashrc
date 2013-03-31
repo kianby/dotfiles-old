@@ -21,3 +21,7 @@ alias grep='grep -i --color'
 export SVN_EDITOR=/usr/bin/vim
 
 source ~/.liquidprompt
+
+# Python virtualenv wrapper
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
