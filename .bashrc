@@ -7,8 +7,6 @@ fi
 
 # User specific aliases and functions
 
-#source ~/prompt.bash
-
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
 alias bak="bak"
 
@@ -25,3 +23,6 @@ source ~/.liquidprompt
 # Python virtualenv wrapper
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+
+# Extend PATH
+export PATH=$PATH:~/bin
