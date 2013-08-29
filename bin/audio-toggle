@@ -1,0 +1,59 @@
+#!/bin/bash
+# Sound Toggle
+# By Charles Cruz
+#
+# The following script toggles the between laptop speakers and hdmi audio (if detected).
+# This also disables/enables
+# Version 1.3
+
+########### Settings ###########
+# Backlight Settings
+BACKLIGHT_BATTERY=20
+BACKLIGHT_AC=100
+
+USERID="$(cat /var/run/ConsoleKit/database | grep -B 8 is_active=true | grep uid= | cut -f 2 -d '=')"
+USER="$(grep $USERID /etc/passwd | cut -f 1 -d ':')"
+HDMI_STATUS_CARD0="$(cat /sys/class/drm/card0-HDMI-A-1/status)"
+HDMI_STATUS_CARD1="$(cat /sys/class/drm/card1-HDMI-A-1/status)"
+GNOME_SCREENSAVER_PROC=`ps xa | grep gnome-screensaver | head -n 1 | awk '{print $1}'`
+
+export `grep -z DBUS_SESSION_BUS_ADDRESS /proc/$GNOME_SCREENSAVER_PROC/environ`
+export XAUTHORITY="/home/$USER/.Xauthority"
+export DISPLAY="$(cat /var/run/ConsoleKit/database | grep x11_display= | cut -f 2 -d '=')"
+
+# HDMI is connected
+if [ "$HDMI_STATUS_CARD0" = connected ] || [ "$HDMI_STATUS_CARD1" = connected ]; then
+    # Send notification
+    sudo -u $USER notify-send -i display "HDMI connected"
+
+    # Set the sound card profile
+    sudo -u $USER pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
+
+    # Disable the lockscreen if it's enabled so you can close the lockscreen
+    if [[ $(sudo -u $USER gsettings get org.gnome.desktop.screensaver lock-enabled) = true ]]; then
+        sudo -u $USER gsettings set org.gnome.desktop.screensaver lock-enabled false
+    fi
+
+# HDMI is not connected
+else
+    # Send notification
+    sudo -u $USER notify-send -i computer "HDMI disconnected"
+
+    # Set the sound card profile
+    sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+
+    # Restore the lock setting, if necessary
+    if [[ $(sudo -u $USER gsettings get org.gnome.desktop.screensaver lock-enabled) = false ]]; then
+        sudo -u $USER gsettings set org.gnome.desktop.screensaver lock-enabled true
+    fi
+
+    # Restore default battery/power brightness
+    #cat /proc/acpi/ac_adapter/AC/state | grep "on-line"
+    #if [ $? -eq 0 ]; then
+    #    xbacklight -set $BACKLIGHT_AC # Power cable is connected
+    #else
+    #    xbacklight -set $BACKLIGHT_BATTERY # Power cable is not connected
+    #fi
+fi
+
+exit 0
