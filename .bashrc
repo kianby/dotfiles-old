@@ -47,6 +47,7 @@ alias grep='grep -i --color'
 alias tmux="TERM=screen-256color-bce tmux"
 
 export SVN_EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 
 source ~/.liquidprompt
 
