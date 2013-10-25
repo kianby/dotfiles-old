@@ -1,0 +1,9 @@
+#!/bin/bash
+IN="LVDS1"
+EXT="HDMI1"
+if (xrandr | grep "$EXT disconnected"); then
+    xrandr --output $EXT --off --output $IN --auto
+else
+    xrandr --output $IN --auto --output $EXT --mode  720x576 --right-of $IN
+fi
+
