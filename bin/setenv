@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export ANT_HOME=/home/yannic/Software/apache-ant-1.9.3
+export PATH=/home/yannic/Software/apache-ant-1.9.3/bin:$PATH
+
