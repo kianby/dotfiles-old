@@ -1,0 +1,30 @@
+#!/bin/bash
+# Sound Toggle
+# By Charles Cruz
+# Modified by Yax: big cuts for XFCE / ArchLinux 
+#
+# The following script toggles the between laptop speakers and hdmi audio (if detected).
+# This also disables/enables
+
+HDMI_STATUS_CARD0="$(cat /sys/class/drm/card0-HDMI-A-1/status 2>/dev/null)"
+HDMI_STATUS_CARD1="$(cat /sys/class/drm/card1-HDMI-A-1/status 2>/dev/null)"
+
+# HDMI is connected
+if [ "$HDMI_STATUS_CARD0" = connected ] || [ "$HDMI_STATUS_CARD1" = connected ]; then
+    # Send notification
+    sudo -u $USER notify-send -i display "HDMI connected"
+
+    # Set the sound card profile
+    sudo -u $USER pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
+
+# HDMI is not connected
+else
+    # Send notification
+    sudo -u $USER notify-send -i computer "HDMI disconnected"
+
+    # Set the sound card profile
+    sudo -u $USER pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+
+fi
+
+exit 0

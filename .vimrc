@@ -75,9 +75,8 @@ set undodir=~/.backup,.,/tmp
 set directory=~/.backup,.,/tmp
 
 " load a color scheme
-let g:solarized_termcolors=16
-color solarized
 set background=dark
+colorscheme solarized
 
 " display the current mode
 set showmode
