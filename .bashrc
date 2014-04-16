@@ -50,6 +50,10 @@ alias 'stunnel'='while [ ! -f /tmp/sshuttle.pid ]; do sudo /usr/local/bin/sshutt
 alias 'ktunnel'='[[ -f /tmp/sshuttle.pid ]] && sudo kill `cat /tmp/sshuttle.pid`'
 alias tmux="TERM=screen-256color tmux"
 
+function ssht(){
+  ssh $* -t 'tmux a || tmux || /bin/bash'
+}
+
 export SVN_EDITOR=/usr/bin/vim
 export EDITOR=/usr/bin/vim
 
