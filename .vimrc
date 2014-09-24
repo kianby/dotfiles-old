@@ -29,6 +29,7 @@ Bundle 'sontek/rope-vim'
 Bundle 'fs111/pydoc.vim'
 Bundle 'LustyExplorer'
 Bundle 'LustyJuggler'
+Bundle 'mileszs/ack.vim'
 
 filetype on
 filetype plugin indent on     " required!
