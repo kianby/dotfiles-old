@@ -22,12 +22,13 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'msanders/snipmate.vim'
 Bundle 'ervandew/supertab'
-Bundle 'sontek/minibufexpl.vim'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'sontek/rope-vim'
 Bundle 'fs111/pydoc.vim'
+Bundle 'LustyExplorer'
+Bundle 'LustyJuggler'
 
 filetype on
 filetype plugin indent on     " required!
@@ -75,8 +76,9 @@ set undodir=~/.backup,.,/tmp
 set directory=~/.backup,.,/tmp
 
 " load a color scheme
+let g:solarized_termcolors=16
+color solarized
 set background=dark
-colorscheme solarized
 
 " display the current mode
 set showmode
@@ -159,11 +161,8 @@ nmap Q gqap
 
 nnoremap <silent> <F10> :YRShow<CR>
 
-" miniBufExplorer
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+" added for LustyExplorer
+set hidden
 
 " open tag bar
 nmap <F8> :TagbarToggle<CR>
