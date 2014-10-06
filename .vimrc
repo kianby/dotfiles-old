@@ -15,18 +15,12 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 Bundle 'tpope/vim-surround'
-Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-markdown'
-Bundle 'godlygeek/tabular'
+Bundle 'tpope/vim-repeat'
+Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
-Bundle 'msanders/snipmate.vim'
-Bundle 'ervandew/supertab'
-Bundle 'kevinw/pyflakes-vim'
-Bundle 'vim-scripts/pep8'
-Bundle 'vim-scripts/TaskList.vim'
-Bundle 'sontek/rope-vim'
-Bundle 'fs111/pydoc.vim'
+Bundle 'scrooloose/syntastic'
 Bundle 'LustyExplorer'
 Bundle 'LustyJuggler'
 Bundle 'mileszs/ack.vim'
@@ -162,26 +156,15 @@ nmap Q gqap
 
 nnoremap <silent> <F10> :YRShow<CR>
 
+" Syntastic
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+
 " added for LustyExplorer
 set hidden
 
 " open tag bar
 nmap <F8> :TagbarToggle<CR>
-
-" open task list
-map <leader>td <Plug>TaskList
-
-" check python
-let g:pyflakes_use_quickfix = 0
-let g:pep8_map='<leader>8'
-
-" tab completion and documentation
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
-
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
