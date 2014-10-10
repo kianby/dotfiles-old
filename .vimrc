@@ -17,13 +17,14 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-repeat'
-Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
 Bundle 'LustyExplorer'
 Bundle 'LustyJuggler'
 Bundle 'mileszs/ack.vim'
+Bundle 'bruno-/vim-vertical-move'
 
 filetype on
 filetype plugin indent on     " required!
@@ -165,6 +166,9 @@ set hidden
 
 " open tag bar
 nmap <F8> :TagbarToggle<CR>
+
+" JSON formatter
+nmap <leader>json :%!python -m json.tool
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
