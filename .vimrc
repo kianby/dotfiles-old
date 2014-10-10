@@ -21,10 +21,6 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
-Bundle 'LustyExplorer'
-Bundle 'LustyJuggler'
-Bundle 'mileszs/ack.vim'
-Bundle 'bruno-/vim-vertical-move'
 
 filetype on
 filetype plugin indent on     " required!
@@ -155,20 +151,16 @@ vnoremap > >gv
 vmap Q gq
 nmap Q gqap
 
-nnoremap <silent> <F10> :YRShow<CR>
-
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_python_exec = '/usr/bin/python3'
-
-" added for LustyExplorer
-set hidden
 
 " open tag bar
 nmap <F8> :TagbarToggle<CR>
 
 " JSON formatter
 nmap <leader>json :%!python -m json.tool
+
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
