@@ -22,6 +22,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-obsession'
+Bundle 'scrooloose/nerdtree'
 
 filetype on
 filetype plugin indent on     " required!
@@ -165,6 +166,9 @@ nmap <leader>json :%!python -m json.tool
 " CTRL-P key bindings
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+
+" NerdTree key binding
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
