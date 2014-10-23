@@ -170,6 +170,9 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 " NerdTree key binding
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+" Execute current line in a shell
+nmap <F5> :exec '!'.getline('.')<CR>
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path
