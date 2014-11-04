@@ -48,10 +48,8 @@ scriptencoding utf-8
 set mouse=a
 set mousehide
 
-if has ('x') && has ('gui') " On Linux use + register for copy-paste
+if has ('gui') " On Linux use + register for copy-paste
     set clipboard=unnamedplus
-elseif has ('gui') " On mac and Windows, use * register for copy-paste
-    set clipboard=unnamed
 endif
 
 " better unix / windows compatibility
