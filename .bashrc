@@ -47,8 +47,6 @@ alias wget='wget -c'
 alias mv='mv --interactive --verbose'
 alias cp='cp --verbose'
 alias grep='grep -i --color'
-alias 'stunnel'='while [ ! -f /tmp/sshuttle.pid ]; do sudo /usr/local/bin/sshuttle -r root@host -e '"'"'ssh -i ~/.ssh/id_rsa'"'"' 0.0.0.0/0 -v -x 192.168.0.0/24 --dns --daemon --pidfile=/tmp/sshuttle.pid && sleep 2; done && echo -n "Public IP: " && sleep 1 && curl icanhazip.com'
-alias 'ktunnel'='[[ -f /tmp/sshuttle.pid ]] && sudo kill `cat /tmp/sshuttle.pid`'
 alias tmux="TERM=screen-256color tmux"
 
 function ssht(){
@@ -75,4 +73,7 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
     export TERM='xterm-color'
 fi
+
+# Yaourt colorized paging
+export PAGER="less -r"
 
