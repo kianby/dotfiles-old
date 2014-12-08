@@ -47,11 +47,6 @@ alias wget='wget -c'
 alias mv='mv --interactive --verbose'
 alias cp='cp --verbose'
 alias grep='grep -i --color'
-alias tmux="TERM=screen-256color tmux"
-
-function ssht(){
-  ssh $* -t 'tmux a || tmux || /bin/bash'
-}
 
 export SVN_EDITOR=/usr/bin/vim
 export EDITOR=/usr/bin/vim
@@ -67,12 +62,6 @@ export PATH=$PATH:~/bin
 
 # Extend env
 source ~/bin/setenv
-
-if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='xterm-256color'
-else
-    export TERM='xterm-color'
-fi
 
 # Yaourt colorized paging
 export PAGER="less -r"

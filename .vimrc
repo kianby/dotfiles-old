@@ -177,6 +177,9 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 
+" Fix colors in tmux context
+let base16colorspace=256
+
 " Tomorrow Night Eighties - Full Colour and 256 Colour
 " http://chriskempson.com
 "
