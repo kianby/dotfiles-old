@@ -57,10 +57,7 @@ source ~/.liquidprompt
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
-# Extend PATH
-export PATH=$PATH:~/bin
-
-# Extend env
+# Extend Env
 source ~/bin/setenv
 
 # Yaourt colorized paging
