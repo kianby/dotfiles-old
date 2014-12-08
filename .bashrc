@@ -60,9 +60,6 @@ source /usr/bin/virtualenvwrapper.sh
 # Extend Env
 source ~/bin/setenv
 
-# Yaourt colorized paging
-export PAGER="less -r"
-
 # Workaround for GDM issue ignoring Xresources macros
 xrdb -merge ~/.Xresources
 
