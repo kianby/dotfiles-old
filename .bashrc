@@ -38,8 +38,6 @@ else
     alias vi='vim'
 fi
 
-alias ll='ls -l'
-
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -69,5 +67,7 @@ source /usr/bin/virtualenvwrapper.sh
 source ~/bin/setenv
 
 # Workaround for GDM issue ignoring Xresources macros
-xrdb -merge ~/.Xresources
+if [ -x /usr/bin/xrdb ]; then
+    xrdb -merge ~/.Xresources
+fi
 
