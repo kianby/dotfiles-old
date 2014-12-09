@@ -40,6 +40,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
+[[ $TMUX = "" ]] && export TERM=xterm-256color
+
 alias ll='ls -l'
 alias la='ls -A'
 alias rm='rm --interactive --verbose'
