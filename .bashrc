@@ -30,8 +30,14 @@ shopt -s checkwinsize
 
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
 alias bak="bak"
-alias vi='gvim -v'
-alias vim='gvim -v'
+
+if [ -x /usr/bin/gvim ]; then
+    alias vi='gvim -v'
+    alias vim='gvim -v'
+else
+    alias vi='vim'
+fi
+
 alias ll='ls -l'
 
 # enable color support of ls
