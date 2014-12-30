@@ -1,0 +1,60 @@
+# .kshrc
+
+# skip remaining setup if shell is not interactive
+#[ $- == *i* ] || exit 0
+
+# Base Korn Shell environment
+[ -r /etc/ksh.kshrc ] && . /etc/ksh.kshrc
+
+# Disable flow control on terminal
+stty -ixon
+
+set +o markdirs # Add / to all directory names generated from wildcard expansion.
+set -o noclobber # Don't allow > redirection to existing files.
+set -o trackall # Substitute full pathnames for commands in alias expansions.
+
+export PS1="\a\h:$(tput bold)\w$(tput sgr0) \$ "
+
+# motd
+[[ -f ~/.motd ]] && cat ~/.motd
+
+# configure Terminal and Tmux
+
+# This is to check the TERM and change accordingly.
+# Console default term = vt220, in X = xterm
+if [[ $TERM == xterm || $TERM == screen ]];
+then
+    export TERM="xterm-256color";
+else
+    export TERM="wsvt25";
+fi
+COLORTERM=
+export TERM
+ 
+# This is for tmux
+[ -n "$TMUX" ] && export TERM="screen-256color" 
+
+# User specific aliases and functions
+
+function bak { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
+alias bak="bak"
+
+if [ -x /usr/bin/gvim ]; then
+    alias vi='gvim -v'
+    alias vim='gvim -v'
+else
+    alias vi='vim'
+fi
+
+alias ll='colorls -Gl'
+alias la='colorls -GA'
+alias wget='wget -c'
+
+export SVN_EDITOR=/usr/local/bin/vim
+export EDITOR=/usr/local/bin/vim
+export HISTFILE=$HOME/.history
+
+# Python virtualenv wrapper
+export WORKON_HOME=~/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
+
