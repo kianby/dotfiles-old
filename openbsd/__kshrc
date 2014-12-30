@@ -13,6 +13,16 @@ set +o markdirs # Add / to all directory names generated from wildcard expansion
 set -o noclobber # Don't allow > redirection to existing files.
 set -o trackall # Substitute full pathnames for commands in alias expansions.
 
+set -o emacs
+# Go back in command history (up arrow)
+alias __A='^P'
+# Go back in command history (down arrow)
+alias __B='^N'
+# Move right on the command line (right arrow)
+alias __C='^F'
+# Move left on the command line (left arrow)
+alias __D='^B'
+
 export PS1="\a\h:$(tput bold)\w$(tput sgr0) \$ "
 
 # motd
@@ -48,13 +58,14 @@ fi
 
 alias ll='colorls -Gl'
 alias la='colorls -GA'
+alias rm='rm -i'
 alias wget='wget -c'
 
 export SVN_EDITOR=/usr/local/bin/vim
-export EDITOR=/usr/local/bin/vim
+export GIT_EDITOR=/usr/local/bin/vim
 export HISTFILE=$HOME/.history
 
-# Python virtualenv wrapper
+# Python virtualenv directory
 export WORKON_HOME=~/.virtualenvs
 #source /usr/bin/virtualenvwrapper.sh
 
