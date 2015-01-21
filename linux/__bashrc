@@ -63,9 +63,6 @@ source ~/.liquidprompt
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
-# Extend Env
-source ~/bin/setenv
-
 # Workaround for GDM issue ignoring Xresources macros
 if [ -x /usr/bin/xrdb ]; then
     xrdb -merge ~/.Xresources

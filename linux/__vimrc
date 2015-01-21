@@ -4,26 +4,27 @@
 
 " This must be first, because it changes other options as side effect
 set nocompatible
+filetype off
 
 " Vundle configuration
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-obsession'
-Bundle 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-obsession'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
 
-filetype on
+call vundle#end()
 filetype plugin indent on     " required!
  "
 " Brief help
@@ -652,4 +653,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 endif
 
 set background=dark
+
+" airline: show /hide tabline
+let g:airline#extensions#tabline#enabled = 0
 
