@@ -3,7 +3,7 @@ dotfiles
 
 My place for configuration files.
 
-- Funtoo / Gentoo 
+- Funtoo (or Gentoo)
 - Archlinux
 - OpenBSD
 
