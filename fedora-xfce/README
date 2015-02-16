@@ -1,0 +1,16 @@
+Oh My GIT
+=========
+
+https://github.com/arialdomartini/oh-my-git
+
+## Installation
+
+Copy fonts : cp /.../home/johndoe/__fonts.* ~/.fonts
+Update fonts : sudo fc-cache -fv ~/.fonts
+
+## Link Shell scripts
+
+ln -s /.../home/johndoe/__bashrc ~/.bashrc
+ln -s /.../home/johndoe/prompt.sh ~/.
+ln -s /.../home/johndoe/base.sh ~/.
+
