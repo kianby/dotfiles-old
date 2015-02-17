@@ -58,7 +58,7 @@ export SVN_EDITOR=/usr/bin/vim
 export EDITOR=/usr/bin/vim
 
 # Oh my GIT
-source prompt.sh
+source ~/prompt.sh
 
 # Python virtualenv
 export WORKON_HOME=~/.virtualenvs
