@@ -62,7 +62,6 @@ source prompt.sh
 
 # Python virtualenv
 export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 
 VIRTUAL_ENV_DISABLE_PROMPT=true
 function omg_prompt_callback() {
