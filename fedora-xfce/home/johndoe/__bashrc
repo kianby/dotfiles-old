@@ -70,8 +70,3 @@ function omg_prompt_callback() {
     fi
 }
 
-# Workaround for GDM issue ignoring Xresources macros
-if [ -x /usr/bin/xrdb ]; then
-    xrdb -merge ~/.Xresources
-fi
-
