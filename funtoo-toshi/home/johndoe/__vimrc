@@ -4,27 +4,26 @@
 
 " This must be first, because it changes other options as side effect
 set nocompatible
-
-" Vundle configuration
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+" vundle configuration
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-obsession'
-Bundle 'scrooloose/nerdtree'
-Bundle "pangloss/vim-javascript"
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-obsession'
+Plugin 'scrooloose/nerdtree'
 
-filetype on
+call vundle#end()
 filetype plugin indent on     " required!
  "
 " Brief help
@@ -70,9 +69,6 @@ set directory=~/.backup,.,/tmp
 " display the current mode
 set showmode
 
-" highlight current line 
-set cursorline
-
 " show partial commands in status line and selected chars/lines in visual mode
 set showcmd
 
@@ -104,10 +100,11 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 " formatting
 set nowrap
 set autoindent
-set shiftwidth=4
 set expandtab
+set shiftwidth=2
+set softtabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 set tabstop=8
-set softtabstop=4
 set textwidth=79
 
 set pastetoggle=<F12>
@@ -166,20 +163,12 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 " Execute current line in a shell
 nmap <F5> :exec '!'.getline('.')<CR>
 
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
 " Fix colors in tmux context
 let base16colorspace=256
+set t_Co=256
+
+" highlight current line 
+set cursorline
 
 " Tomorrow Night Eighties - Full Colour and 256 Colour
 " http://chriskempson.com
