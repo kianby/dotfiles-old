@@ -22,6 +22,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-obsession'
 Bundle 'scrooloose/nerdtree'
+Bundle "pangloss/vim-javascript"
 
 filetype on
 filetype plugin indent on     " required!
