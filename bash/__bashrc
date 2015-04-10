@@ -84,9 +84,8 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-# Workaround for GDM issue ignoring Xresources macros
-if [ -f /usr/bin/gdm ]; then
-  if [ -x /usr/bin/xrdb ]; then
-    xrdb -merge ~/.Xresources
-  fi
+# Workaround for message on VIM exit:
+# => Warning: Color name "t_background" is not defined
+if [ -x /usr/bin/xrdb ]; then
+  xrdb -merge ~/.Xresources
 fi
