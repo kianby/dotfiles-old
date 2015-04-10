@@ -76,6 +76,13 @@ fi
 # Oh my GIT
 if [ -f ~/.ohmygitprompt.sh ]; then
   source ~/.ohmygitprompt.sh
+
+  VIRTUAL_ENV_DISABLE_PROMPT=true
+  function omg_prompt_callback() {
+    if [ -n "${VIRTUAL_ENV}" ]; then
+        echo "\e[0;31m(`basename ${VIRTUAL_ENV}`)\e[0m "
+    fi
+  }
 fi
 
 # Python virtualenv 
