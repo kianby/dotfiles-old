@@ -1,6 +1,10 @@
 # .bashrc
 
 # Source global definitions
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
 if [ -f /etc/bash/bashrc ]; then
     . /etc/bash/bashrc
 fi
@@ -64,8 +68,25 @@ alias logview="logview"
 function logtail() { tail -f $1 | ccze ; }
 alias logtail="logtail"
 
-source ~/.liquidprompt
+# use liquid prompt if installed
+if [ -f ~/.liquidprompt ]; then
+  source ~/.liquidprompt
+fi
+
+# Oh my GIT
+if [ -f ~/.ohmygitprompt.sh ]; then
+  source ~/.ohmygitprompt.sh
+fi
 
 # Python virtualenv 
 export WORKON_HOME=~/.virtualenvs
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
+# Workaround for GDM issue ignoring Xresources macros
+if [ -f /usr/bin/gdm ]; then
+  if [ -x /usr/bin/xrdb ]; then
+    xrdb -merge ~/.Xresources
+  fi
+fi

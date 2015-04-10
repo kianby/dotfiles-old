@@ -5,7 +5,7 @@
 
 # configuration de l'accès à la base de données
 # Liste des bases à sauvegarder
-DBNAMES="asur datastore"
+DBNAMES="datastore"
 HOST="--host=localhost"
 USER="--user=root"
 # si vous n'avez pas de mot de passe commenter la ligne suivante et décommenter la suivante

@@ -1,15 +1,19 @@
 # .bashrc
 
 # Source global definitions
+# Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
+if [ -f /etc/bash/bashrc ]; then
+    . /etc/bash/bashrc
+fi
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+if [[ $- != *i* ]] ; then
+    # Shell is non-interactive.  Be done now!
+    return
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -20,7 +24,8 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=5000
+HISTTIMEFORMAT="%d/%m/%Y - %T : "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -55,18 +60,33 @@ alias cp='cp --verbose'
 alias grep='grep -i --color'
 
 export SVN_EDITOR=/usr/bin/vim
-export EDITOR=/usr/bin/vim
+export GIT_EDITOR=/usr/bin/vim
+
+# colored logs
+function logview() { ccze -A < $1 | less -R ; }
+alias logview="logview"
+function logtail() { tail -f $1 | ccze ; }
+alias logtail="logtail"
+
+# use liquid prompt if installed
+if [ -f ~/.liquidprompt ]; then
+  source ~/.liquidprompt
+fi
 
 # Oh my GIT
-source ~/prompt.sh
+if [ -f ~/.ohmygitprompt.sh ]; then
+  source ~/.ohmygitprompt.sh
+fi
 
-# Python virtualenv
+# Python virtualenv 
 export WORKON_HOME=~/.virtualenvs
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
-VIRTUAL_ENV_DISABLE_PROMPT=true
-function omg_prompt_callback() {
-    if [ -n "${VIRTUAL_ENV}" ]; then
-        echo "\e[0;31m(`basename ${VIRTUAL_ENV}`)\e[0m "
-    fi
-}
-
+# Workaround for GDM issue ignoring Xresources macros
+if [ -f /usr/bin/gdm ]; then
+  if [ -x /usr/bin/xrdb ]; then
+    xrdb -merge ~/.Xresources
+  fi
+fi

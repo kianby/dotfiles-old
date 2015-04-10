@@ -22,7 +22,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/nerdtree'
+Plugin 'pangloss/vim-javascript'
 
+filetype on
 call vundle#end()
 filetype plugin indent on     " required!
  "
@@ -68,6 +70,7 @@ set directory=~/.backup,.,/tmp
 
 " display the current mode
 set showmode
+
 
 " show partial commands in status line and selected chars/lines in visual mode
 set showcmd
