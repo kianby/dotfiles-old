@@ -65,7 +65,7 @@ export GIT_EDITOR=/usr/bin/vim
 # colored logs
 function logview() { ccze -A < $1 | less -R ; }
 alias logview="logview"
-function logtail() { tail -f $1 | ccze ; }
+function logtail() { tail -f $1 | ccze -A; }
 alias logtail="logtail"
 
 # use liquid prompt if installed
