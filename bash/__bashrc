@@ -1,7 +1,6 @@
 # .bashrc
 
 # Source global definitions
-# Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
@@ -31,10 +30,102 @@ HISTTIMEFORMAT="%d/%m/%Y - %T : "
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# User specific aliases and functions
+# enable color support of ls
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    export LS_COLORS="di=00;34:ow=01;34:mi=00;35:ln=00;35:ex=00;31"
+fi
+
+[[ $TMUX = "" ]] && export TERM=xterm-256color
+
+# User specific aliases
+alias lx='ls -lXB'         #  Sort by extension.
+alias lk='ls -lSr'         #  Sort by size, biggest last.
+alias lt='ls -ltr'         #  Sort by date, most recent last.
+alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
+alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+
+# The ubiquitous 'll': directories first, with alphanumeric sorting
+alias ll="ls -lv --group-directories-first"
+alias la='ll -A'           # Show hidden files
+alias lr='ll -R'           # Recursive ls
+alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+
+alias rm='rm --interactive --verbose'
+alias wget='wget -c'
+alias mv='mv --interactive --verbose'
+alias cp='cp --verbose'
+alias grep='grep -i --color'
+
+# User specific functions
 
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
-alias bak="bak"
+
+# Find a file with a pattern in name:
+function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
+
+#  Find a pattern in a set of files and highlight them:
+#  (needs a recent version of egrep).
+function fstr()
+{
+    OPTIND=1
+    local mycase=""
+    local usage="fstr: find string in files.
+Usage: fstr [-i] \"pattern\" [\"filename pattern\"] "
+    while getopts :it opt
+    do
+        case "$opt" in
+           i) mycase="-i " ;;
+           *) echo "$usage"; return ;;
+        esac
+    done
+    shift $(( $OPTIND - 1 ))
+    if [ "$#" -lt 1 ]; then
+        echo "$usage"
+        return;
+    fi
+    find . -type f -name "${2:-*}" -print0 | \
+xargs -0 egrep --color=always -sn ${case} "$1" 2>&- | more
+
+}
+
+function extract()      # Handy Extract Program
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+# Creates an archive (*.tar.gz) from given directory.
+function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+
+# Create a ZIP archive of a file or folder.
+function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+
+# colored logs
+function logview() { ccze -A < $1 | less -R ; }
+alias logview="logview"
+function logtail() { tail -f $1 | ccze -A; }
+alias logtail="logtail"
+
+
+# Configure favorite editor
 
 if [ -x /usr/bin/gvim ]; then
     alias vi='gvim -v'
@@ -43,30 +134,14 @@ else
     alias vi='vim'
 fi
 
-# enable color support of ls
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-fi
-
-[[ $TMUX = "" ]] && export TERM=xterm-256color
-
-alias ll='ls -l'
-alias la='ls -A'
-alias rm='rm --interactive --verbose'
-alias wget='wget -c'
-alias mv='mv --interactive --verbose'
-alias cp='cp --verbose'
-alias grep='grep -i --color'
-
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 
-# colored logs
-function logview() { ccze -A < $1 | less -R ; }
-alias logview="logview"
-function logtail() { tail -f $1 | ccze -A; }
-alias logtail="logtail"
+# set default prompt
+White='\e[0;37m'        # White
+Red='\e[0;31m'          # Red
+PS1="${White}\u:${Red}\w${White} $ "
+export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
 if [ -f ~/.liquidprompt ]; then
