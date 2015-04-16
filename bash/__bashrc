@@ -140,7 +140,8 @@ export GIT_EDITOR=/usr/bin/vim
 # set default prompt
 White='\e[0;37m'        # White
 Red='\e[0;31m'          # Red
-PS1="${White}\u:${Red}\w${White} $ "
+Reset=$(tput sgr0)
+PS1="\[$White\]\u:\[$Red\]\w\[$White\] \$\[$Reset\] "
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
