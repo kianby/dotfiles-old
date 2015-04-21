@@ -124,6 +124,19 @@ alias logview="logview"
 function logtail() { tail -f $1 | ccze -A; }
 alias logtail="logtail"
 
+# Function translating dmesg timestamp into a timestamp human readable
+function dmesghr {
+    # Define date format (similar to syslog)
+    date_format="%b %d %T %Y"
+ 
+    # Get the uptime in seconds from /proc/uptime
+    uptime=$(cut -d " " -f 1 /proc/uptime)
+ 
+    # Read dmesg and convert date with date_format defined above
+    dmesg | sed "s/^\[[ ]*\?\([0-9.]*\)\] \(.*\)/\\1 \\2/" | while read timestamp message; do
+        printf "[%s] %s\n" "$(date --date "now - $uptime seconds + $timestamp seconds" +"${date_format}")" "$message"
+    done
+}
 
 # Configure favorite editor
 
