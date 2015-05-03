@@ -201,5 +201,7 @@ fi
 # Workaround for message on VIM exit:
 # => Warning: Color name "t_background" is not defined
 if [ -x /usr/bin/xrdb ]; then
-  xrdb -merge ~/.Xresources
+  if [ -n "${DISPLAY}" ]; then
+    xrdb -merge ~/.Xresources
+  fi
 fi
