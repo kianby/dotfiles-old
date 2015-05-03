@@ -153,13 +153,26 @@ export GIT_EDITOR=/usr/bin/vim
 # set my minimalist prompt
 White='\e[0;37m'        # White
 Red='\e[0;31m'          # Red
-Reset=$(tput sgr0)
+Green='\e[0;32m'        # Green
+Blue='\e[0;34m'         # Bold Blue
+BRed='\e[1;31m'         # Bold Red
+Color_Off='\e[0m'       # Text Reset
+
+if [ "$USER" = "root" ] ; then
+  PROMPT_USER_COLOR=$BRed
+  PROMPT_SYMBOL="#"
+else
+  PROMPT_USER_COLOR=$Green
+  PROMPT_SYMBOL="$"
+fi
 
 if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
-  PS1="\[$White\]\u@\h:\[$Red\]\w\[$White\] \$\[$Reset\] "
+  PROMPT_SSH="@\h"
 else
-  PS1="\[$White\]\u:\[$Red\]\w\[$White\] \$\[$Reset\] "
+  PROMPT_SSH=""
 fi
+
+PS1="\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$Blue\]\w\[$White\] \[$PROMPT_SYMBOL\]\[$Color_Off\] "
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
