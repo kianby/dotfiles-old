@@ -150,11 +150,16 @@ fi
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 
-# set default prompt
+# set my minimalist prompt
 White='\e[0;37m'        # White
 Red='\e[0;31m'          # Red
 Reset=$(tput sgr0)
-PS1="\[$White\]\u:\[$Red\]\w\[$White\] \$\[$Reset\] "
+
+if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
+  PS1="\[$White\]\u@\h:\[$Red\]\w\[$White\] \$\[$Reset\] "
+else
+  PS1="\[$White\]\u:\[$Red\]\w\[$White\] \$\[$Reset\] "
+fi
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
@@ -162,7 +167,7 @@ if [ -f ~/.liquidprompt ]; then
   source ~/.liquidprompt
 fi
 
-# Oh my GIT
+# use 'Oh my GIT' if installed
 if [ -f ~/.ohmygitprompt.sh ]; then
   source ~/.ohmygitprompt.sh
 
