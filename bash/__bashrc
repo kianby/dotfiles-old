@@ -55,7 +55,7 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias rm='rm --interactive --verbose'
 alias wget='wget -c'
 alias mv='mv --interactive --verbose'
-alias cp='cp --verbose'
+alias cp='cp --verbose --interactive'
 alias grep='grep -i --color'
 
 # User specific functions
