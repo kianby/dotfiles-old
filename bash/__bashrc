@@ -58,6 +58,8 @@ alias mv='mv --interactive --verbose'
 alias cp='cp --verbose --interactive'
 alias grep='grep -i --color'
 
+alias wgetcool='wget --limit-rate=200k'
+
 # User specific functions
 
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
