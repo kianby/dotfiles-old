@@ -153,18 +153,25 @@ export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 
 # set my minimalist prompt
-White='\e[0;37m'        # White
-Red='\e[0;31m'          # Red
-Green='\e[0;32m'        # Green
-Blue='\e[0;34m'         # Bold Blue
-BRed='\e[1;31m'         # Bold Red
-Color_Off='\e[0m'       # Text Reset
+#White='\e[0;37m'        # White
+#Red='\e[0;31m'          # Red
+#Green='\e[0;32m'        # Green
+#Blue='\e[0;34m'         # Bold Blue
+#BRed='\e[1;31m'         # Bold Red
+#Color_Off='\e[0m'       # Text Reset
+
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+blue=$(tput setaf 4)
+bold=$(tput bold)
+reset=$(tput sgr0)
+
 
 if [ "$USER" = "root" ] ; then
-  PROMPT_USER_COLOR=$BRed
+  PROMPT_USER_COLOR=$bold$red
   PROMPT_SYMBOL="#"
 else
-  PROMPT_USER_COLOR=$Green
+  PROMPT_USER_COLOR=$green
   PROMPT_SYMBOL="$"
 fi
 
@@ -174,7 +181,7 @@ else
   PROMPT_SSH=""
 fi
 
-PS1="\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$Blue\]\w\[$White\] \[$PROMPT_SYMBOL\]\[$Color_Off\] "
+PS1="\n\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$blue\]\w\[$reset\] \[$PROMPT_SYMBOL\] "
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
