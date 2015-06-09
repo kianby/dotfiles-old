@@ -181,7 +181,7 @@ else
   PROMPT_SSH=""
 fi
 
-PS1="\n\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$blue\]\w\[$reset\] \[$PROMPT_SYMBOL\] "
+PS1="\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$blue\]\w\[$reset\] \[$PROMPT_SYMBOL\] "
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
@@ -196,7 +196,7 @@ if [ -f ~/.ohmygitprompt.sh ]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true
   function omg_prompt_callback() {
     if [ -n "${VIRTUAL_ENV}" ]; then
-        echo "\e[0;31m(`basename ${VIRTUAL_ENV}`)\e[0m "
+        echo "\[$red\](`basename ${VIRTUAL_ENV}`)\[$reset\] "
     fi
   }
 fi
