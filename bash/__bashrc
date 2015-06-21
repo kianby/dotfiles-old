@@ -149,6 +149,7 @@ fi
 
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 
 # set my minimalist prompt
 White='\e[0;37m'        # White
