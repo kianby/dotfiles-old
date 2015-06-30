@@ -168,7 +168,8 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 nmap <F5> :exec '!'.getline('.')<CR>
 
 " Add the virtualenv's site-packages to vim path
-:python << EOF
+if  has('python')
+  :py << EOF
 import os.path
 import sys
 import vim
@@ -178,6 +179,7 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
+endif
 
 " Fix colors in tmux context
 let base16colorspace=256
