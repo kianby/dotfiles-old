@@ -168,7 +168,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 nmap <F5> :exec '!'.getline('.')<CR>
 
 " Add the virtualenv's site-packages to vim path
-py << EOF
+:python << EOF
 import os.path
 import sys
 import vim
