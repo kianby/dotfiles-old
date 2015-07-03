@@ -159,14 +159,14 @@ nmap <F8> :TagbarToggle<CR>
 nmap <leader>json :%!python -m json.tool
 
 " CtrlP key settings
-nnoremap <leader>b :CtrlPBuffer
+nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|target$\|bin$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 " NerdTree key binding
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>r :NERDTreeFind<CR>
 
 " Execute current line in a shell
 nmap <F5> :exec '!'.getline('.')<CR>
