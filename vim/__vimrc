@@ -23,6 +23,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -157,12 +158,15 @@ nmap <F8> :TagbarToggle<CR>
 " JSON formatter
 nmap <leader>json :%!python -m json.tool
 
-" CTRL-P key bindings
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
+" CtrlP key settings
+nnoremap <leader>b :CtrlPBuffer
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|target$\|bin$',
+    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 " NerdTree key binding
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>r :NERDTreeFind<cr>
 
 " Execute current line in a shell
 nmap <F5> :exec '!'.getline('.')<CR>
