@@ -14,3 +14,8 @@ function headline() {
 function pause(){
    read -p "$*"
 }
+
+yell() { echo "$0: $*" >&2; }
+die() { yell "$*"; exit 111; }
+try() { "$@" || die "cannot $*"; }
+silent() { "$@" >/dev/null 2>&1; }
