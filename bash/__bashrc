@@ -55,8 +55,10 @@ alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 alias rm='rm --interactive --verbose'
 alias wget='wget -c'
 alias mv='mv --interactive --verbose'
-alias cp='cp --verbose'
+alias cp='cp --verbose --interactive'
 alias grep='grep -i --color'
+
+alias wgetcool='wget --limit-rate=200k'
 
 # User specific functions
 
@@ -152,18 +154,25 @@ export GIT_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
 # set my minimalist prompt
-White='\e[0;37m'        # White
-Red='\e[0;31m'          # Red
-Green='\e[0;32m'        # Green
-Blue='\e[0;34m'         # Bold Blue
-BRed='\e[1;31m'         # Bold Red
-Color_Off='\e[0m'       # Text Reset
+red='\[\e[0;31m\]'      # Red
+green='\[\e[0;32m\]'    # Green
+blue='\[\e[0;34m\]'     # Bold Blue
+boldred='\[\e[1;31m\]'  # Bold Red
+reset='\[\e[0m\]'       # Text Reset
+
+#red=$(tput setaf 1)
+#green=$(tput setaf 2)
+#blue=$(tput setaf 4)
+#bold=$(tput bold)
+#reset=$(tput sgr0)
+
 
 if [ "$USER" = "root" ] ; then
-  PROMPT_USER_COLOR=$BRed
+  # $bold$red
+  PROMPT_USER_COLOR=$boldred 
   PROMPT_SYMBOL="#"
 else
-  PROMPT_USER_COLOR=$Green
+  PROMPT_USER_COLOR=$green
   PROMPT_SYMBOL="$"
 fi
 
@@ -173,7 +182,7 @@ else
   PROMPT_SSH=""
 fi
 
-PS1="\[$PROMPT_USER_COLOR\]\u\[$PROMPT_SSH\] \[$Blue\]\w\[$White\] \[$PROMPT_SYMBOL\]\[$Color_Off\] "
+PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w$reset $PROMPT_SYMBOL "
 export omg_ungit_prompt=${PS1}
 
 # use liquid prompt if installed
@@ -188,7 +197,7 @@ if [ -f ~/.ohmygitprompt.sh ]; then
   VIRTUAL_ENV_DISABLE_PROMPT=true
   function omg_prompt_callback() {
     if [ -n "${VIRTUAL_ENV}" ]; then
-        echo "\e[0;31m(`basename ${VIRTUAL_ENV}`)\e[0m "
+        echo "\[$red\](`basename ${VIRTUAL_ENV}`)\[$reset\] "
     fi
   }
 fi

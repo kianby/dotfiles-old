@@ -1,3 +1,6 @@
 # Push local changes to origin
 bind status P !git push origin
 
+# Delete file
+bind status D !rm %(file)
+
