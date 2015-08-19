@@ -145,8 +145,6 @@ function dmesghr {
 if [ -x /usr/bin/gvim ]; then
     alias vi='gvim -v'
     alias vim='gvim -v'
-else
-    alias vi='vim'
 fi
 
 export SVN_EDITOR=/usr/bin/vim
