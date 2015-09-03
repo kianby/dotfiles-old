@@ -14,6 +14,9 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
+# disable completion of hidden files
+bind 'set match-hidden-files off'
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -157,13 +160,6 @@ green='\[\e[0;32m\]'    # Green
 blue='\[\e[0;34m\]'     # Bold Blue
 boldred='\[\e[1;31m\]'  # Bold Red
 reset='\[\e[0m\]'       # Text Reset
-
-#red=$(tput setaf 1)
-#green=$(tput setaf 2)
-#blue=$(tput setaf 4)
-#bold=$(tput bold)
-#reset=$(tput sgr0)
-
 
 if [ "$USER" = "root" ] ; then
   # $bold$red
