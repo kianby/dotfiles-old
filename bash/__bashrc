@@ -40,7 +40,7 @@ if [ -x /usr/bin/dircolors ]; then
     export LS_COLORS="di=00;34:ow=01;34:mi=00;35:ln=00;35:ex=00;31"
 fi
 
-[[ $TMUX = "" ]] && export TERM=xterm-256color
+[[ $TMUX = "" ]] && [[ $TERM != "screen-256color" ]] && export TERM=xterm-256color
 
 # User specific aliases
 alias lx='ls -lXB'         #  Sort by extension.
@@ -154,6 +154,7 @@ if [ -x /usr/bin/gvim ]; then
     alias vim='gvim -v'
 fi
 
+export EDITOR=/usr/bin/vim
 export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
