@@ -59,7 +59,7 @@ alias rm='rm --interactive --verbose'
 alias wget='wget -c'
 alias mv='mv --interactive --verbose'
 alias cp='cp --verbose --interactive'
-alias grep='grep -i --color'
+alias grep='grep --color'
 
 alias wgetcool='wget --limit-rate=200k'
 
