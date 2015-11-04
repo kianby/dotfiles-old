@@ -45,7 +45,7 @@ while true; do
   read -t 1 LINE;
   if test -z "$LINE"; then
     if test ! -z "$WAITING"; then
-      echo "====================================== CHANGE ======================================";
+      echo "====================== CHANGE:  `date` ==========================";
       WAITING="";
       # Merge the changes before running rsync.
       rsync --update -alzrv $SOURCE/* $DEST
