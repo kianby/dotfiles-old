@@ -214,3 +214,8 @@ if [ -x /usr/bin/xrdb ]; then
     xrdb -merge ~/.Xresources
   fi
 fi
+
+# Use TheFuck (https://pypi.python.org/pypi/thefuck)
+if [ -f /usr/local/bin/thefuck ]; then
+  eval "$(thefuck --alias)"
+fi
