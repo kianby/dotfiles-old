@@ -216,4 +216,4 @@ exec_always feh --bg-scale /home/yannic/Pictures/souris.jpg
 exec --no-startup-id "/bin/bash --login -i ~/.xinitrc"
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id owncloud
-
+exec --no-startup-id /usr/bin/lxpolkit
