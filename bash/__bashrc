@@ -207,14 +207,6 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-# Workaround for message on VIM exit:
-# => Warning: Color name "t_background" is not defined
-if [ -x /usr/bin/xrdb ]; then
-  if [ -n "${DISPLAY}" ]; then
-    xrdb -merge ~/.Xresources
-  fi
-fi
-
 # Use TheFuck (https://pypi.python.org/pypi/thefuck)
 if [ -f /usr/local/bin/thefuck ]; then
   eval "$(thefuck --alias)"
