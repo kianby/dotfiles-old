@@ -213,7 +213,7 @@ assign [class="Thunderbird"] $tag9
 assign [class="Firefox"] $tag10
 
 # autostart
-exec_always feh --bg-scale /home/yannic/Pictures/souris.jpg
+exec_always feh --bg-scale /home/yannic/images/wallpaper.jpg
 exec --no-startup-id "/bin/bash --login -i ~/.xinitrc"
 exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id owncloud
