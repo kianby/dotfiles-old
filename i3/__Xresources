@@ -57,7 +57,16 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 ! URxvt ----------------------------------------------------------------------
-URxvt.font: xft:terminus:size=10
+
+Xterm*termName: xterm-256color
+URxvt*termName: rxvt-256color
+
+!URxvt.font: xft:terminus:size=10
+!URxvt*font: xft:SourceCodePro+Powerline+Awesome Regular:size=10
+URxvt*font: xft:Hack:size=9
+
+URxvt.letterSpace: 0
+
 URxvt*allow_bold: true
 URxvt*internalBorder: 0
 urxvt*externalBorder: 0
@@ -72,3 +81,4 @@ URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 URxvt*skipScroll:  true
+
