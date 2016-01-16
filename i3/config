@@ -216,7 +216,7 @@ client.focused_inactive #545454 #2d2d2d #D9D9D9
 client.urgent #51c4d4 #ecedee #51c4d4
 
 # Assign application to workspaces
-assign [class="Clementine"] $WS7
+assign [class="Cantata"] $WS7
 assign [class="Thunar"] $WS8
 assign [class="Thunderbird"] $WS9
 assign [class="Firefox"] $WS10
