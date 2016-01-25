@@ -58,13 +58,8 @@ Xft.hintstyle:  hintslight
 
 ! URxvt ----------------------------------------------------------------------
 
-!URxvt.font: xft:terminus:size=10
-!URxvt*font: xft:SourceCodePro+Powerline+Awesome Regular:size=10
-!URxvt.font: xft:Hack:size=10
-!URxvt.boldFont: xft:Hack:size=10
-
-URxvt.font: xft:Hack:size=10
-URxvt.boldFont: xft:Hack:size=10
+URxvt.font: xft:Hack:size=9
+URxvt.boldFont: xft:Hack:size=9
 
 URxvt.letterSpace: 0
 
