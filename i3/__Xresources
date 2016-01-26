@@ -76,3 +76,4 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 URxvt*skipScroll:  true
 
+URxvt.intensityStyles: false
