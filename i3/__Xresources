@@ -58,10 +58,8 @@ Xft.hintstyle:  hintslight
 
 ! URxvt ----------------------------------------------------------------------
 
-URxvt.font: xft:Hack:size=9
-URxvt.boldFont: xft:Hack:size=9
-
-URxvt.letterSpace: 0
+URxvt.font: xft:Hack:size=10
+URxvt.boldFont: xft:Hack:size=10
 
 URxvt*allow_bold: true
 URxvt*internalBorder: 0
