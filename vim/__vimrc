@@ -25,6 +25,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/csapprox'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -189,7 +190,7 @@ endif
 set cursorline
 
 " color scheme
-set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 colorscheme Tomorrow-Night-Eighties
-
+source ~/.vim-csapprox-tomorrow
 
