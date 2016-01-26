@@ -185,10 +185,11 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-set t_Co=256
-set background=dark
-colorscheme Tomorrow-Night-Eighties
-
 " highlight current line 
 set cursorline
+
+" color scheme
+set t_Co=256
+colorscheme Tomorrow-Night-Eighties
+
 
