@@ -185,13 +185,8 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-" Fix colors in tmux context
-let base16colorspace=256
-set t_Co=256
 colorscheme Tomorrow-Night-Eighties
 
 " highlight current line 
 set cursorline
-
-set background=dark
 
