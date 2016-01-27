@@ -11,4 +11,6 @@ My place for configuration files.
 - Fonts (~/.fonts)
 - Tig: text-mode interface for Git  (http://jonas.nitro.dk/tig)
 - Funtoo specific
+- X11
+- i3
 
