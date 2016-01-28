@@ -201,6 +201,16 @@ if [ -f ~/.ohmygitprompt.sh ]; then
   }
 fi
 
+# use 'git-prompt' if installed (http://git-prompt.sh/)
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+  _git_part='$(__git_ps1 " (%s)")'
+  PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH$green${_git_part} $blue\w$reset $PROMPT_SYMBOL "
+  GIT_PS1_SHOWUPSTREAM="verbose"
+  GIT_PS1_SHOWDIRTYSTATE="true"
+fi
+
+
 # Python virtualenv 
 export WORKON_HOME=~/.virtualenvs
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then
