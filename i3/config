@@ -228,7 +228,7 @@ exec --no-startup-id urxvtd -q -o -f
 exec --no-startup-id owncloud
 exec --no-startup-id lxpolkit
 exec --no-startup-id dunst -config ~/.i3/dunstrc
-exec --no-startup-id compton
+#exec --no-startup-id compton
 
 # Screen locking
 bindsym $mod+l exec "/usr/local/bin/fuzzy_lock.sh"
