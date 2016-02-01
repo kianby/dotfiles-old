@@ -60,6 +60,8 @@ Xft.hintstyle:  hintslight
 
 URxvt.font: xft:Hack:size=10
 URxvt.boldFont: xft:Hack:size=10
+URxvt.italicdFont: xft:Hack:size=10
+URxvt.boldItalicdFont: xft:Hack:size=10
 
 URxvt*allow_bold: true
 URxvt*internalBorder: 0
