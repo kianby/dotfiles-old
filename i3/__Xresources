@@ -1,4 +1,5 @@
-!TomorrowNightEighties
+! TomorrowNightEighties -----------------------------------------------------
+
 #define t_background        #2d2d2d
 #define t_current_line      #393939
 #define t_selection         #515151
@@ -11,7 +12,6 @@
 #define t_aqua              #66cccc
 #define t_blue              #6699cc
 #define t_purple            #cc99cc
-
 
 *.foreground:   t_foreground
 *.background:   t_background
@@ -50,6 +50,7 @@
 *.color15:      t_current_line
 
 ! Xft settings ---------------------------------------------------------------
+
 Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
@@ -59,23 +60,29 @@ Xft.hintstyle:  hintslight
 ! URxvt ----------------------------------------------------------------------
 
 URxvt.font: xft:Hack:size=10
-URxvt.boldFont: xft:Hack:size=10
-URxvt.italicdFont: xft:Hack:size=10
-URxvt.boldItalicdFont: xft:Hack:size=10
+URxvt.boldFont: xft:Hack:style=Bold:size=10
+URxvt.italicFont: xft:Hack:style=Italic:size=10
+URxvt.boldItalicFont: xft:Hack:style=Bold Italic:size=10
 
-URxvt*allow_bold: true
-URxvt*internalBorder: 0
-urxvt*externalBorder: 0
-URxvt*transparent: false
-URxvt*loginShell: true
-URxvt*scrollBar: false
-URxvt*scrollBar_right: false
-URxvt*scrollBar_floating: false
-URxvt*borderless: true
-URxvt*buffered: true
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: true
-URxvt*scrollTtyKeypress: true
-URxvt*skipScroll:  true
-
+URxvt.allow_bold: true
+URxvt.internalBorder: 4
+urxvt.externalBorder: 0
+URxvt.transparent: false
+URxvt.loginShell: true
+URxvt.borderless: true
 URxvt.intensityStyles: false
+
+! scrolling
+URxvt.scrollBar: true
+URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+URxvt.scrollBar_floating: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: false
+URxvt.scrollTtyKeypress: true
+URxvt.mouseWheelScrollPage: false
+
+! disable iso 14755 mode
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
