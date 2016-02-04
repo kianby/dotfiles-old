@@ -63,6 +63,10 @@ alias grep='grep --color'
 
 alias wgetcool='wget --limit-rate=200k'
 
+if [ -f ~/.more-alias ]; then
+  source ~/.more-alias
+fi
+
 # User specific functions
 
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
