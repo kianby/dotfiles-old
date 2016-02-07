@@ -82,6 +82,9 @@ URxvt.scrollWithBuffer: false
 URxvt.scrollTtyKeypress: true
 URxvt.mouseWheelScrollPage: false
 
+! icon
+URxvt.iconFile: /usr/share/icons/Adwaita/scalable/apps/utilities-terminal-symbolic.svg
+
 ! disable iso 14755 mode
 URxvt.iso14755: false
 URxvt.iso14755_52: false
