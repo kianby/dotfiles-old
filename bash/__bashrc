@@ -188,34 +188,11 @@ else
 fi
 
 PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w$reset $PROMPT_SYMBOL "
-export omg_ungit_prompt=${PS1}
 
-# use liquid prompt if installed
-if [ -f ~/.liquidprompt ]; then
-  source ~/.liquidprompt
+# Use 'Tmux gitbar' if installed
+if [ $TMUX ] && [ -f ~/.tmux-gitbar/tmux-gitbar.sh ]; then
+  source ~/.tmux-gitbar/tmux-gitbar.sh
 fi
-
-# use 'Oh my GIT' if installed
-if [ -f ~/.ohmygitprompt.sh ]; then
-  source ~/.ohmygitprompt.sh
-
-  VIRTUAL_ENV_DISABLE_PROMPT=true
-  function omg_prompt_callback() {
-    if [ -n "${VIRTUAL_ENV}" ]; then
-        echo "\[$red\](`basename ${VIRTUAL_ENV}`)\[$reset\] "
-    fi
-  }
-fi
-
-# use 'git-prompt' if installed (http://git-prompt.sh/)
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-  _git_part='$(__git_ps1 " (%s)")'
-  PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH$green${_git_part} $blue\w$reset $PROMPT_SYMBOL "
-  GIT_PS1_SHOWUPSTREAM="verbose"
-  GIT_PS1_SHOWDIRTYSTATE="true"
-fi
-
 
 # Python virtualenv 
 export WORKON_HOME=~/.virtualenvs
@@ -223,7 +200,3 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-# Use TheFuck (https://pypi.python.org/pypi/thefuck)
-if [ -f /usr/local/bin/thefuck ]; then
-  eval "$(thefuck --alias)"
-fi
