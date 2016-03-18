@@ -89,7 +89,7 @@ man() {
 }
 
 # Find a file with a pattern in name:
-function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
+function ff() { find . -type f -iname "$*" -ls ; }
 
 #  Find a pattern in a set of files and highlight them:
 #  (needs a recent version of egrep).
