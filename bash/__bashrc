@@ -1,5 +1,6 @@
 # .bashrc
 
+# disable BASH inheritance if ~/.no-bash-inheritance is present
 if [ ! -f ~/.no-bash-inheritance ]; then
     # Source global definitions
     if [ -f /etc/bashrc ]; then
@@ -42,9 +43,10 @@ if [ -x /usr/bin/dircolors ]; then
     export LS_COLORS="di=00;34:ow=01;34:mi=00;35:ln=00;35:ex=00;31"
 fi
 
-# [[ $TMUX = "" ]] && [[ $TERM != "screen-256color" ]] && export TERM=xterm-256color
-
-# User specific aliases
+# ---------------------------------------------------------------------------
+#  ALIAS
+# ---------------------------------------------------------------------------
+#
 alias lx='ls -lXB'         #  Sort by extension.
 alias lk='ls -lSr'         #  Sort by size, biggest last.
 alias lt='ls -ltr'         #  Sort by date, most recent last.
@@ -64,12 +66,15 @@ alias cp='cp --verbose --interactive'
 alias grep='grep --color'
 
 alias wgetcool='wget --limit-rate=200k'
+alias meteo='curl wttr.in'
 
 if [ -f ~/.more-alias ]; then
   source ~/.more-alias
 fi
 
-# User specific functions
+# ---------------------------------------------------------------------------
+#  FUNCTIONS
+# ---------------------------------------------------------------------------
 
 function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
 function bakto() {
@@ -164,7 +169,9 @@ function dmesghr {
     done
 }
 
-# Configure favorite editor
+# ---------------------------------------------------------------------------
+#  EDITOR
+# ---------------------------------------------------------------------------
 
 if [ -x /usr/bin/gvim ]; then
     alias vi='gvim -v'
@@ -176,7 +183,11 @@ export SVN_EDITOR=/usr/bin/vim
 export GIT_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 
-# set my minimalist prompt
+# ---------------------------------------------------------------------------
+#  PROMPT
+# ---------------------------------------------------------------------------
+
+# set a minimalist prompt
 red='\[\e[0;31m\]'      # Red
 green='\[\e[0;32m\]'    # Green
 blue='\[\e[0;34m\]'     # Bold Blue
@@ -200,12 +211,13 @@ fi
 
 PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w$reset $PROMPT_SYMBOL "
 
-# Use 'Tmux gitbar' if installed
-if [ $TMUX ] && [ -f ~/.tmux-gitbar/tmux-gitbar.sh ]; then
-  source ~/.tmux-gitbar/tmux-gitbar.sh
-fi
+# use liquiprompt if present
+[[ $- = *i* ]] && [ -d ~/.liquidprompt ] && source ~/.liquidprompt/liquidprompt
 
-# Python virtualenv 
+# ---------------------------------------------------------------------------
+#  PYTHON VIRTUALENV
+# ---------------------------------------------------------------------------
+
 export WORKON_HOME=~/.virtualenvs
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
