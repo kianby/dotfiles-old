@@ -156,9 +156,6 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 " open tag bar
 nmap <F8> :TagbarToggle<CR>
 
-" JSON formatter
-nmap <leader>json :%!python -m json.tool
-
 " CtrlP key settings
 nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
