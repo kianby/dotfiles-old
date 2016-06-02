@@ -63,15 +63,6 @@ set viewoptions=options,cursor,unix,slash
 " allow for cursor beyond last character
 set virtualedit=onemore
 
-" set backups and undos
-set backup
-set undofile
-set undolevels=1000
-set undoreload=10000
-set backupdir=~/.backup,.,/tmp
-set undodir=~/.backup,.,/tmp
-set directory=~/.backup,.,/tmp
-
 " display the current mode
 set showmode
 
