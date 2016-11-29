@@ -259,10 +259,3 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
-# ---------------------------------------------------------------------------
-#  E-MAIL NOTIFICATION ON SSH CONNECTION
-# ---------------------------------------------------------------------------
-
-if [ "$SSH_CLIENT" != "" ]; then
-      echo 'NOTIFICATION - Acces SSH sur' `hostname` 'le' `date` `who` | mail -s "NOTIFICATION - Connexion via SSH depuis: `who | cut -d"(" -f2 | cut -d")" -f1`" root
-fi
