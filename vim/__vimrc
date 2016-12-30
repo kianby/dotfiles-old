@@ -26,6 +26,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/csapprox'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
 filetype plugin indent on     " required!
