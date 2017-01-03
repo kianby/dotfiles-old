@@ -177,6 +177,6 @@ colorscheme default
 
 " highlight current line 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
 
