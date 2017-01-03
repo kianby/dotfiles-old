@@ -14,7 +14,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
@@ -25,7 +24,6 @@ Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/nerdtree'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'godlygeek/csapprox'
 Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
@@ -175,11 +173,10 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
+colorscheme default 
+
 " highlight current line 
 set cursorline
+hi CursorLine   cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 
-" color scheme
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-colorscheme Tomorrow-Night-Eighties
-source ~/.vim-csapprox-tomorrow
 
