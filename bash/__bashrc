@@ -68,9 +68,6 @@ alias grep='grep --color'
 alias wgetcool='wget --limit-rate=200k'
 alias meteo='curl wttr.in'
 
-if [ -f ~/.more-alias ]; then
-  source ~/.more-alias
-fi
 
 # ---------------------------------------------------------------------------
 #  FUNCTIONS
@@ -259,3 +256,9 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 
+# ---------------------------------------------------------------------------
+#  EXTEND BASHRC WITH CUSTOM FILE
+# ---------------------------------------------------------------------------
+if [ -f ~/.bashrc.custom ]; then
+  source ~/.bashrc.custom
+fi
