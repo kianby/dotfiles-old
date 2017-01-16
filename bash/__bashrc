@@ -66,7 +66,7 @@ alias cp='cp --verbose --interactive'
 alias grep='grep --color'
 
 alias wgetcool='wget --limit-rate=200k'
-alias meteo='curl wttr.in'
+alias dmesg='dmesg -T'
 
 
 # ---------------------------------------------------------------------------
@@ -152,20 +152,6 @@ alias logview="logview"
 function logtail() { tail -f $1 | ccze -A; }
 alias logtail="logtail"
 
-# Function translating dmesg timestamp into a timestamp human readable
-function dmesghr {
-    # Define date format (similar to syslog)
-    date_format="%b %d %T %Y"
- 
-    # Get the uptime in seconds from /proc/uptime
-    uptime=$(cut -d " " -f 1 /proc/uptime)
- 
-    # Read dmesg and convert date with date_format defined above
-    dmesg | sed "s/^\[[ ]*\?\([0-9.]*\)\] \(.*\)/\\1 \\2/" | while read timestamp message; do
-        printf "[%s] %s\n" "$(date --date "now - $uptime seconds + $timestamp seconds" +"${date_format}")" "$message"
-    done
-}
-
 cp_p() 
 {
     local params=( "$@" )
@@ -205,11 +191,6 @@ cp_p()
 # ---------------------------------------------------------------------------
 #  EDITOR
 # ---------------------------------------------------------------------------
-
-if [ -x /usr/bin/gvim ]; then
-    alias vi='gvim -v'
-    alias vim='gvim -v'
-fi
 
 export EDITOR=/usr/bin/vim
 export SVN_EDITOR=/usr/bin/vim
