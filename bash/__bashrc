@@ -1,7 +1,7 @@
 # .bashrc
 
-# disable BASH inheritance if ~/.no-bash-inheritance is present
-if [ ! -f ~/.no-bash-inheritance ]; then
+# do not load parent BASH if ~/.bash.noparent is present
+if [ ! -f ~/.bash.noparent ]; then
     # Source global definitions
     if [ -f /etc/bashrc ]; then
         . /etc/bashrc
