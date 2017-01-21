@@ -226,7 +226,7 @@ fi
 PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w$reset $PROMPT_SYMBOL "
 
 # use liquiprompt if present
-[[ $- = *i* ]] && [ -d ~/.liquidprompt ] && source ~/.liquidprompt/liquidprompt
+[[ $- = *i* ]] && source ~/.liquidprompt/liquidprompt
 
 # ---------------------------------------------------------------------------
 #  PYTHON VIRTUALENV
