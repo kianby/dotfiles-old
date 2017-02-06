@@ -14,17 +14,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-repeat'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-obsession'
-Plugin 'scrooloose/nerdtree'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'junegunn/goyo.vim'
+Plugin 'tpope/vim-vinegar'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -108,8 +102,8 @@ set pastetoggle=<F12>
 " windows management
 set winheight=30
 set winminheight=1
-nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
 
 
 " key (re)mappings
@@ -151,13 +145,6 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|target$\|bin$',
     \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-
-" NerdTree key binding
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <leader>r :NERDTreeFind<CR>
-
-" Execute current line in a shell
-nmap <F5> :exec '!'.getline('.')<CR>
 
 " Add the virtualenv's site-packages to vim path
 if  has('python')
