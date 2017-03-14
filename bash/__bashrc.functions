@@ -1,0 +1,118 @@
+# ---------------------------------------------------------------------------
+#  FUNCTIONS
+# ---------------------------------------------------------------------------
+
+function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
+function bakto() {
+    cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`";
+    mv "$1_`date +%Y-%m-%d_%H-%M-%S`" "$2";
+}
+
+man() {
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
+  LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+  LESS_TERMCAP_me=$'\E[0m' \
+  LESS_TERMCAP_se=$'\E[0m' \
+  LESS_TERMCAP_so=$'\E[38;5;246m' \
+  LESS_TERMCAP_ue=$'\E[0m' \
+  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+  man "$@"
+}
+
+# Find a file with a pattern in name:
+function ff() { find . -type f -iname "$*" -ls ; }
+
+#  Find a pattern in a set of files and highlight them:
+#  (needs a recent version of egrep).
+function fstr()
+{
+    OPTIND=1
+    local mycase=""
+    local usage="fstr: find string in files.
+Usage: fstr [-i] \"pattern\" [\"filename pattern\"] "
+    while getopts :it opt
+    do
+        case "$opt" in
+           i) mycase="-i " ;;
+           *) echo "$usage"; return ;;
+        esac
+    done
+    shift $(( $OPTIND - 1 ))
+    if [ "$#" -lt 1 ]; then
+        echo "$usage"
+        return;
+    fi
+    find . -type f -name "${2:-*}" -print0 | \
+xargs -0 egrep --color=always -sn ${case} "$1" 2>&- | more
+
+}
+
+function extract()      # Handy Extract Program
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+# Creates an archive (*.tar.gz) from given directory.
+function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+
+# Create a ZIP archive of a file or folder.
+function makezip() { zip -r "${1%%/}.zip" "$1" ; }
+
+# colored logs
+function logview() { ccze -A < $1 | less -R ; }
+alias logview="logview"
+function logtail() { tail -f $1 | ccze -A; }
+alias logtail="logtail"
+
+cp_p() 
+{
+    local params=( "$@" )
+    # Le dernier champs est la destination
+    unset params[$(( ${#params[@]} - 1 ))]
+    # $COLUMNS correspond à la largeur de votre terminal
+    # et est mise à jour après chaque commande si l'option
+    # checkwinsize est définie ou à la réception du signal WINCH
+    kill -s WINCH $$
+    [ $COLUMNS -lt 20 ] && (cp -a -- "$@"; return $?)
+    lim=$(( $COLUMNS - 10 ))
+    # Les "--" sont là pour signifier qu'il n'y a pas d'options
+    # sinon, il faut modifier le "du" etc...
+    # J'utilise le "-a" pour pouvoir copier par exemple des
+    # répertoires sans soucis.
+    strace -e write cp -a -- "$@" 2>&1 |
+    awk '{
+    count += $NF    # rajoute la valeur du dernier champs
+    # 10 représente la fréquence d affichage
+    if (count % 10 == 0) {
+    percent = count / total_size * 100
+    printf "%3d%% [", percent
+    for (i=0;i<=percent*'$lim'/100;i++)
+    printf "="
+    if (percent<100)
+    printf ">"
+    for (j=i;j< '$lim';j++)
+    printf " "
+    printf "]\r"
+    }
+    }
+    END { printf "100\n" }' \
+    total_size=$(du -bc "${params[@]}" | awk 'END {print $1}') \
+    count=0
+}

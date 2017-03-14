@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+#  ALIAS
+# ---------------------------------------------------------------------------
+#
+alias lx='ls -lXB'         #  Sort by extension.
+alias lk='ls -lSr'         #  Sort by size, biggest last.
+alias lt='ls -ltr'         #  Sort by date, most recent last.
+alias lc='ls -ltcr'        #  Sort by/show change time,most recent last.
+alias lu='ls -ltur'        #  Sort by/show access time,most recent last.
+
+# The ubiquitous 'll': directories first, with alphanumeric sorting
+alias ll="ls -lv --group-directories-first"
+alias la='ll -A'           # Show hidden files
+alias lr='ll -R'           # Recursive ls
+alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
+
+alias rm='rm --interactive --verbose'
+alias wget='wget -c'
+alias mv='mv --interactive --verbose'
+alias cp='cp --verbose --interactive'
+alias grep='grep --color'
+
+alias wgetcool='wget --limit-rate=200k'
+alias dmesg='dmesg -T'
+
