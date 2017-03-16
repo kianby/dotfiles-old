@@ -17,6 +17,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
+Plugin 'flazz/vim-colorschemes'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -155,7 +156,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-colorscheme default 
+colorscheme soda
 
 " highlight current line 
 set cursorline
