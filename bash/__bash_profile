@@ -1,13 +1,15 @@
 # .bash_profile
 
-# ---------------------------------------------------------------------------
-#  E-MAIL NOTIFICATION ON SSH CONNECTION
-# ---------------------------------------------------------------------------
+# Get the aliases and functions
+[ -f $HOME/.bashrc ] && . $HOME/.bashrc
 
-#if [ "$SSH_CLIENT" != "" ]; then
-#  echo 'NOTIFICATION - Acces SSH sur' `hostname` 'le' `date` `who` | mail -s "NOTIFICATION - Connexion via SSH depuis: `who | cut -d"(" -f2 | cut -d")" -f1`" root
-#fi
-
-if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
+# Send e-mail notification
+if [ "$SSH_CLIENT" != "" ]; then
+  echo 'NOTIFICATION - Acces SSH sur' `hostname` 'le' `date` `who` | mail -s "NOTIFICATION - Connexion via SSH depuis: `who | cut -d"(" -f2 | cut -d")" -f1`" root
 fi
+
+# Start X on TTY1
+if [ "$(tty)" = "/dev/tty1" ]; then
+    startx && exit
+fi
+
