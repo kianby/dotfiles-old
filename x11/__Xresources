@@ -59,6 +59,9 @@ Xft.hintstyle:  hintslight
 
 ! URxvt ----------------------------------------------------------------------
 
+XTerm*termName: xterm-256color
+URxvt*termName: rxvt-unicode
+
 URxvt.font: xft:Hack:size=10
 URxvt.boldFont: xft:Hack:style=Bold:size=10
 URxvt.italicFont: xft:Hack:style=Italic:size=10
@@ -89,3 +92,7 @@ URxvt.iconFile: /usr/share/icons/mate-colors-common/scalable/apps/utilities-term
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
