@@ -140,7 +140,7 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-"colorscheme soda
+colorscheme wombat256i
 
 " highlight current line 
 set cursorline
