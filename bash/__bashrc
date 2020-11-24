@@ -83,6 +83,17 @@ PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w$reset $PROMPT_SYMBOL "
 # use liquiprompt if present
 [[ $- = *i* ]] && [ -d ~/.liquidprompt ] && source ~/.liquidprompt/liquidprompt
 
+# add git info to PS1
+brname () {
+    a=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ -n "$a" ]; then
+        echo " [$a]"
+    else
+        echo ""
+    fi
+}
+PS1="$PROMPT_USER_COLOR\u$PROMPT_SSH $blue\w \$(brname)$reset $PROMPT_SYMBOL "
+
 # ---------------------------------------------------------------------------
 #  PYTHON VIRTUALENV
 # ---------------------------------------------------------------------------
