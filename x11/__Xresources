@@ -86,7 +86,7 @@ URxvt.scrollTtyKeypress: true
 URxvt.mouseWheelScrollPage: false
 
 ! icon
-URxvt.iconFile: /usr/share/icons/mate-colors-common/scalable/apps/utilities-terminal.svg
+URxvt.iconFile: /usr/share/icons/mate/scalable/apps/utilities-terminal-symbolic.svg
 
 ! disable iso 14755 mode
 URxvt.iso14755: false
