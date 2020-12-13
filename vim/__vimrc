@@ -156,7 +156,8 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 endif
 
-colorscheme soda
+" do not set if urxvt is properly configured
+" colorscheme solarized8_dark
 
 " highlight current line 
 set cursorline
