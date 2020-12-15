@@ -18,6 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-vinegar'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -84,8 +85,8 @@ set scrolloff=3
 set scrolljump=5
 
 " highlight problematic whitespace
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+"set list
+"set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 " formatting
 set nowrap
@@ -131,6 +132,11 @@ vnoremap > >gv
 " use Q for formatting the current parapgraph (or selection)
 vmap Q gq
 nmap Q gqap
+
+" Git Gutter remapping: next, previous, undo
+nmap <leader>gn <Plug>(GitGutterNextHunk)
+nmap <leader>gp <Plug>(GitGutterPrevHunk)
+nmap <leader>gup <Plug>(GitGutterUndoHunk)
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
