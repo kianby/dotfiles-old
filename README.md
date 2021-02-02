@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-My place for configuration files.
+My place for configuration files:
 
 - Bash 
 - Vim (Vundle plugins)
@@ -12,4 +12,3 @@ My place for configuration files.
 - Tig: text-mode interface for Git  (http://jonas.nitro.dk/tig)
 - X11
 - i3
-
