@@ -136,7 +136,7 @@ nmap Q gqap
 " Git Gutter remapping: next, previous, undo
 nmap <leader>gn <Plug>(GitGutterNextHunk)
 nmap <leader>gp <Plug>(GitGutterPrevHunk)
-nmap <leader>gup <Plug>(GitGutterUndoHunk)
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
