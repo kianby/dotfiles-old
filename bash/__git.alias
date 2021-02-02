@@ -1,0 +1,6 @@
+# My Git aliases
+alias gnb='git checkout -b'
+alias gcd='git checkout develop'
+alias gcm='git checkout master'
+alias gpush='git push -u origin'
+alias gpull='git fetch origin && git pull'
