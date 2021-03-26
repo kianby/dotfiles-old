@@ -1,5 +1,7 @@
 # My Git aliases
+alias gs='git status'
 alias gnb='git checkout -b'
+alias gc='git checkout'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
 alias gpush='git push -u origin'
