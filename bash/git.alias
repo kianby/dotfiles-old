@@ -1,0 +1,15 @@
+[alias]
+  a = add
+  c = commit
+  cd = checkout develop
+  cl = clone
+  cm = checkout master
+  co = checkout
+  cp = cherry-pick
+  fo = fetch origin
+  m = merge
+  nb = checkout -b
+  p = push -u origin
+  pu = pull
+  s = status
+
