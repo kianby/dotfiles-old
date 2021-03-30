@@ -1,6 +1,6 @@
 # Push local changes to origin
-bind status P !git push origin
+bind status P !git p
 
 # Delete file
-bind status D !rm %(file)
+bind status ! !rm %(file)
 
