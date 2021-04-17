@@ -1,5 +1,5 @@
-dotfiles
-========
+[DEPRECATED] dotfiles
+=====================
 
 My place for configuration files:
 
