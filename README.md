@@ -12,3 +12,5 @@ My place for configuration files:
 - Tig: text-mode interface for Git  (http://jonas.nitro.dk/tig)
 - X11
 - i3
+
+Replaced by project dotfiles managed by ChezMoi (https://github.com/twpayne/chezmoi) 
